@@ -1,1 +1,22 @@
-<video controls src='movie.mp4'></video><p>Paid access only</p>
+
+<!DOCTYPE html>
+<html>
+<head><title>Watch</title></head>
+<body>
+  <h2>Watch Movie</h2>
+  <p>This movie is only available after payment.</p>
+  <button onclick="simulateMpesa()">Pay with MPESA</button>
+  <div id="video" style="display:none; margin-top: 20px;">
+    <video width="320" height="240" controls>
+      <source src="test-movie.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <script>
+    function simulateMpesa() {
+      alert("Simulating MPESA payment (sandbox mode)...");
+      document.getElementById("video").style.display = "block";
+    }
+  </script>
+</body>
+</html>
