@@ -1,9 +1,137 @@
 
 <!DOCTYPE html>
-<html>
-<head><title>AI Movie Site</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Movie Site</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #fff;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      background-color: #1f2a40;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    .preview-box {
+      width: 100%;
+      height: 300px;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .preview-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .preview-title {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 1.2em;
+      background: rgba(0,0,0,0.5);
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 20px;
+      scroll-behavior: smooth;
+      background-color: #202b3c;
+    }
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+    .carousel-item {
+      min-width: 200px;
+      background: #2d3e50;
+      border-radius: 10px;
+      padding: 10px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+    .carousel-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1f2a40;
+    }
+  </style>
+</head>
 <body>
-  <h1>AI Movie Site</h1>
-  <p>Welcome! Please <a href="login.html">log in</a> to watch movies.</p>
+
+  <header>
+    <h1>AI Movie Site</h1>
+  </header>
+
+  <div class="preview-box">
+    <video id="previewVideo" autoplay muted loop></video>
+    <div class="preview-title" id="previewTitle">Loading...</div>
+  </div>
+
+  <h2 style="padding-left: 20px;">Available & Upcoming Movies</h2>
+  <div class="carousel" id="movieCarousel">
+    <div class="carousel-item">
+      <img src="https://via.placeholder.com/200x250?text=Movie+1" alt="Movie 1">
+      <p>Fast Run - Watch</p>
+    </div>
+    <div class="carousel-item">
+      <img src="https://via.placeholder.com/200x250?text=Movie+2" alt="Movie 2">
+      <p>Zombie Town - Coming Soon</p>
+    </div>
+    <div class="carousel-item">
+      <img src="https://via.placeholder.com/200x250?text=Movie+3" alt="Movie 3">
+      <p>Love Trap - Watch</p>
+    </div>
+    <div class="carousel-item">
+      <img src="https://via.placeholder.com/200x250?text=Movie+4" alt="Movie 4">
+      <p>Street Hustle - Coming Soon</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>Contact us: aifilms@example.com | WhatsApp: +254712345678</p>
+    <p>© 2025 AI Movie Site. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const videos = [
+      {src: "test-movie.mp4", title: "Fast Run"},
+      {src: "trailer-2.mp4", title: "Zombie Town"},
+      {src: "trailer-3.mp4", title: "Love Trap"},
+    ];
+    let current = 0;
+    const previewVideo = document.getElementById("previewVideo");
+    const previewTitle = document.getElementById("previewTitle");
+
+    function playNext() {
+      const video = videos[current];
+      previewVideo.src = video.src;
+      previewTitle.textContent = video.title;
+      current = (current + 1) % videos.length;
+    }
+
+    playNext();
+    setInterval(playNext, 5000);
+  </script>
+
 </body>
 </html>
